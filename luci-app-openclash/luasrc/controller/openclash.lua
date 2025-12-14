@@ -507,7 +507,9 @@ local function dler_login_info_save()
 	uci:set("openclash", "config", "dler_checkin_interval", luci.http.formvalue("interval"))
 	if tonumber(luci.http.formvalue("multiple")) > 100 then
 		uci:set("openclash", "config", "dler_checkin_multiple", "100")
-	elseif tonumber(luci.http.formvalue("multiple")) < 1 or not tonumber(luci.http.formvalue("multiple")) then
+    elseif tonumber(luci.http.formvalue("multiple")) < -100 then
+		uci:set("openclash", "config", "dler_checkin_multiple", "-100")
+	elseif not tonumber(luci.http.formvalue("multiple")) then
 		uci:set("openclash", "config", "dler_checkin_multiple", "1")
 	else
 		uci:set("openclash", "config", "dler_checkin_multiple", luci.http.formvalue("multiple"))

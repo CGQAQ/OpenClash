@@ -1313,18 +1313,21 @@ o.rmempty = true
 
 o = s:taboption("dlercloud", Value, "dler_checkin_multiple")
 o.title = translate("Checkin Multiple")
-o.datatype = "uinteger"
+o.datatype = "integer"
 o.default = "1"
 o:depends("dler_checkin", "1")
 o.rmempty = true
-o.description = font_green..bold_on..translate("Multiple Must Be a Positive Integer and No More Than 100")..bold_off..font_off
+o.description = font_green..bold_on..translate("Multiple Must Be a in range of -100 to 100 and Not 0")..bold_off..font_off
 function o.validate(self, value)
-	if tonumber(value) < 1 then
-		return "1"
+	if tonumber(value) < -100 then
+		return "-100"
 	end
 	if tonumber(value) > 100 then
 		return "100"
 	end
+    if tonumber(value) == 0 then
+        return "1"
+    end
 	return value
 end
 

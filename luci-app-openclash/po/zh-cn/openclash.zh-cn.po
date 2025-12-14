@@ -2238,8 +2238,8 @@ msgstr "签到间隔（小时）"
 msgid "Checkin Multiple"
 msgstr "签到倍数"
 
-msgid "Multiple Must Be a Positive Integer and No More Than 100"
-msgstr "倍数必须是正整数且不大于 100"
+msgid "Multiple Must Be a in range of -100 to 100 and Not 0"
+msgstr "倍数必须大于等于-100，小于等于100且不能为0"
 
 msgid "Dler Cloud Checkin Successful, Result:"
 msgstr "Dler Cloud 签到成功，结果："
